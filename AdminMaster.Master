@@ -1,0 +1,189 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AdminMaster.master.cs" Inherits="TechStore.AdminMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="js/script.js"></script>
+    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <script language="JavaScript" type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script language="JavaScript" type="text/javascript" src="js/bootstrap.min.js"></script>
+
+          <!-- Carousel -->
+    <script language="JavaScript" type="text/javascript">
+        $(document).ready(function () {
+            $('.carousel').carousel({
+                interval: 3000
+            })
+        });
+    </script>  
+    <script>
+        $(document).ready(function () {
+            $(".dropdown-toggle").dropdown();
+        });
+    </script>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet" />
+
+    <title>Cara</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+           <nav class="navbar fixed-top navbar-light bg-light navbar navbar-expand-lg" style="position:sticky;">
+                <a class="navbar-brand" href="Default.aspx">
+                    <a href="AdminHome"><img src="Images/logo.png" class="logo" /></a>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="AdminHome">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Orders">Orders</a>
+                        </li>
+                          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Products
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                              <a class="dropdown-item" href="ViewProducts" >Manage Products</a>
+                              <a class="dropdown-item" href="AddProducts">Add Products</a>
+                              <a class="dropdown-item" href="AddProductCategory">Add Product Category</a>
+                                <a class="dropdown-item" href="AddProductBrand">Add Product Brand</a> 
+                            </div>
+                          </li>
+                    </ul>
+                    <ul class="navbar-nav mr-auto">
+                    <div class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </div>
+                    </ul>
+                    <ul class="navbar-nav mr-auto">
+                    <div class="dropdown" runat="server" id="userprof">
+                          <button
+                            class="btn btn-primary btn-floating dropdown-toggle hidden-arrow bg-primary"
+                            type="button"
+      
+                            id="dropdownMenuButton2"
+                            data-mdb-toggle="dropdown"
+                            aria-expanded="true"
+                          >
+                            <i class="fa-solid fa-user"></i>
+                          </button>
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                            <li><a class="dropdown-item" href="AdminProfile"> <i class="fas fa-user-alt pe-2"></i>My Profile</a></li>
+                            <li><a class="dropdown-item" href="#"> <i class="fas fa-cog pe-2"></i>Settings</a></li>
+                            <li>                 
+                                <a class="dropdown-item" data-toggle="modal" data-target="#logoutmodal"> 
+        
+                                    <i class="fas fa-door-open pe-2"></i>Logout
+                                </a>
+
+                            </li>
+
+                          </ul>
+                        </div>
+                    </ul>
+                </div>
+            </nav>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+            <footer class="section-p1">
+                <div class="col col-md-3">
+                    <img src="Images/logo.png" class="logo" /> 
+                    <h4>Contact</h4>
+                    <p><strong>Address: </strong> 123 xxx</p>
+                    <p><strong>Phone: </strong> 12345678</p>
+                    <p><strong>Hours: </strong>09:00 - 18:00, Mon - Sat</p>
+                    <div class="follow">
+                        <h4>Follow Us</h4>
+                        <div class="icon">
+                            <i class="fab fa-facebook-f"></i>
+                            <i class="fab fa-twitter"></i>
+                            <i class="fab fa-instagram"></i>
+                            <i class="fab fa-pinterest"></i>
+                            <i class="fab fa-youtube"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-md-3">
+                    <h4>About</h4>
+                    <a href="#">About Us</a>
+                    <a href="#">Delivery Information</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms & Conditions</a>
+                    <a href="#">Contact Us</a>
+                </div>
+                <div class="col col-md-3">
+                    <h4>My Account</h4>
+                    <a href="#">Sign In</a>
+                    <a href="#">View Cart</a>
+                    <a href="#">My Wishlist</a>
+                    <a href="#">Track My Order</a>
+                    <a href="#">Help</a>
+                </div>
+                <div class="col install col-md-3">
+                    <h4>Secured Payment Gatways</h4>
+                    <img src="Images/pay/pay.png" />
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2022, CARA -Singapore Ecommerce Website</p>
+                </div>
+            </footer>
+        </div>
+                            <!-- Modal -->
+                    
+                    <div class="modal fade" id="logoutmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-content">
+                                <div class="card-body text-center"> <img src="Images/TechStoreLogo.png" height="60" width="200">
+                                    <div class="comment-box text-center">
+                                    <h4>Are you sure you want to sign out?</h4>
+                                </div>
+                            </div>
+                        </div>
+                          <div class="modal-body">
+
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <asp:Button ID="btnSignout" CssClass="btn btn-danger" runat="server" Text="Logout" OnClick="btnSignOut_Click" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+    </form>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script>
+        $(document).ready(function myfunction() {
+            $("#btnCart").click(function myfunction() {
+                window.location.href = "/Cart.aspx";
+            });
+        });
+    </script>
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+</html>
